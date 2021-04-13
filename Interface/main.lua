@@ -113,6 +113,7 @@ local BringObjectsBringingDistance = 99999999
 BringObjects.Visible = true -- Set visible temporary until a menu exists for selecting multiple options
 local currentlyBringing = false
 
+local objectBringingInProgress = false
 function callBeginObjectBring()
   if objectBringingInProgress then return end
   if not BringObjectsBringing then return end
