@@ -6,6 +6,7 @@ local GUI = _G.SCP3008GUI.Interface
 local LP = game:GetService("Players").LocalPlayer
 local character = LP.Character or LP.CharacterAdded:Wait()
 while not GUI do wait() end
+print("good on interface")
 
 syn.protect_gui(GUI)
 GUI.Parent = CoreGui
