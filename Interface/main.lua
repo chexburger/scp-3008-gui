@@ -234,8 +234,9 @@ function reloadBringObjectItemList()
     BindBringObjectItemSelect(temp)
   end
 end
-
 reloadBringObjectItemList()
+
+BringObjectsOptionsReload.MouseButton1Click:Connect(reloadBringObjectItemList)
 
 LP.CharacterAdded:Connect(function(char)
   character = char
