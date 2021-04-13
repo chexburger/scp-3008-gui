@@ -1,3 +1,5 @@
+while not _G.SCP3008GUI do wait() end
+
 local TestGui = Instance.new("ScreenGui")
 TestGui.Name = "TestGui"
 TestGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling

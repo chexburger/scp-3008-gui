@@ -1,3 +1,5 @@
+while not _G.SCP3008GUI do wait() end
+
 local CoreGui = game:GetService("CoreGui")
 local UIS = game:GetService("UserInputService")
 local GUI = _G.SCP3008GUI.Interface
@@ -6,7 +8,7 @@ local character = LP.Character or LP.CharacterAdded:Wait()
 while not GUI do wait() end
 
 syn.protect_gui(GUI)
-GUI.Parent = game:GetService("CoreGui")
+GUI.Parent = CoreGui
 
 -- Constants
 local GameObjects = game:GetService("Workspace"):WaitForChild("GameObjects")
