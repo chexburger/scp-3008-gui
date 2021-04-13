@@ -12,6 +12,10 @@ Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
 Frame.Size = UDim2.new(0, 500, 0, 300)
 Frame.Parent = TestGui
 
+local Templates = Instance.new("Folder")
+Templates.Name = "Templates"
+Templates.Parent = TestGui
+
 local UICorner = Instance.new("UICorner")
 UICorner.Parent = Frame
 
@@ -64,6 +68,16 @@ MenuSelection.Position = UDim2.new(0.5, 0, 0.5, 0)
 MenuSelection.Size = UDim2.new(0.9, 0, 0.8, 0)
 MenuSelection.Parent = Frame
 
+local ObjectTemplate = Instance.new("TextButton")
+ObjectTemplate.BackgroundColor3 = Color3.fromRGB(0, 102, 149)
+ObjectTemplate.Font = Enum.Font.SourceSansBold
+ObjectTemplate.Name = "ObjectTemplate"
+ObjectTemplate.Size = UDim2.new(1, -8, 0, 25)
+ObjectTemplate.Text = "Object Name"
+ObjectTemplate.TextColor3 = Color3.fromRGB(0, 0, 0)
+ObjectTemplate.TextSize = 20
+ObjectTemplate.Parent = Templates
+
 local BringObjects = Instance.new("Frame")
 BringObjects.BackgroundTransparency = 1
 BringObjects.Name = "BringObjects"
@@ -95,6 +109,9 @@ RemoveTools.Text = "Remove Tools"
 RemoveTools.TextColor3 = Color3.fromRGB(255, 255, 255)
 RemoveTools.TextSize = 25
 RemoveTools.Parent = MenuSelection
+
+local UICorner2 = Instance.new("UICorner")
+UICorner2.Parent = ObjectTemplate
 
 local Options = Instance.new("Frame")
 Options.BackgroundTransparency = 1
@@ -141,31 +158,18 @@ Selected.TextColor3 = Color3.fromRGB(255, 255, 255)
 Selected.TextSize = 14
 Selected.Parent = Options
 
-local RemoveTools2 = Instance.new("TextButton")
-RemoveTools2.AnchorPoint = Vector2.new(0, 1)
-RemoveTools2.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
-RemoveTools2.Font = Enum.Font.SourceSans
-RemoveTools2.LayoutOrder = 4
-RemoveTools2.Name = "RemoveTools"
-RemoveTools2.Position = UDim2.new(0, 0, 1, 0)
-RemoveTools2.Size = UDim2.new(1, 0, 0, 20)
-RemoveTools2.Text = "Start Bringing"
-RemoveTools2.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveTools2.TextSize = 15
-RemoveTools2.Parent = Options
-
-local RemoveTools3 = Instance.new("TextButton")
-RemoveTools3.AnchorPoint = Vector2.new(0, 1)
-RemoveTools3.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
-RemoveTools3.Font = Enum.Font.SourceSans
-RemoveTools3.LayoutOrder = 4
-RemoveTools3.Name = "RemoveTools"
-RemoveTools3.Position = UDim2.new(0, 0, 1, -22)
-RemoveTools3.Size = UDim2.new(1, 0, 0, 20)
-RemoveTools3.Text = "Start Bringing"
-RemoveTools3.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveTools3.TextSize = 15
-RemoveTools3.Parent = Options
+local ReloadList = Instance.new("TextButton")
+ReloadList.AnchorPoint = Vector2.new(0, 1)
+ReloadList.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+ReloadList.Font = Enum.Font.SourceSans
+ReloadList.LayoutOrder = 4
+ReloadList.Name = "ReloadList"
+ReloadList.Position = UDim2.new(0, 0, 1, 0)
+ReloadList.Size = UDim2.new(1, 0, 0, 20)
+ReloadList.Text = "Reload Lists"
+ReloadList.TextColor3 = Color3.fromRGB(255, 255, 255)
+ReloadList.TextSize = 15
+ReloadList.Parent = Options
 
 local BringItem = Instance.new("TextButton")
 BringItem.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
@@ -204,32 +208,20 @@ Count.TextColor3 = Color3.fromRGB(255, 255, 255)
 Count.TextSize = 14
 Count.Parent = Options
 
-local Template = Instance.new("TextButton")
-Template.BackgroundColor3 = Color3.fromRGB(0, 102, 149)
-Template.Font = Enum.Font.SourceSansBold
-Template.Name = "Template"
-Template.Size = UDim2.new(1, -8, 0, 25)
-Template.Text = "Object Name"
-Template.TextColor3 = Color3.fromRGB(0, 0, 0)
-Template.TextSize = 20
-Template.Parent = ObjectList
-
 local UIListLayout = Instance.new("UIListLayout")
 UIListLayout.Padding = UDim.new(0, 2)
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.Parent = ObjectList
 
-local UICorner2 = Instance.new("UICorner")
-UICorner2.Parent = RemoveTools2
+local UIListLayout2 = Instance.new("UIListLayout")
+UIListLayout2.Padding = UDim.new(0, 2)
+UIListLayout2.Parent = ItemList
 
 local UICorner3 = Instance.new("UICorner")
-UICorner3.Parent = RemoveTools3
+UICorner3.Parent = ReloadList
 
 local UICorner4 = Instance.new("UICorner")
 UICorner4.Parent = BringItem
 
-local UICorner5 = Instance.new("UICorner")
-UICorner5.Parent = Template
 
 
 
