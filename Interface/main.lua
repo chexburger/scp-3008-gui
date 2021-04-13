@@ -104,7 +104,6 @@ local BringObjectsOptionsDistance = BringObjectsOptions:WaitForChild("Distance")
 local BringObjectsObjectList = BringObjects:WaitForChild("ObjectList")
 local BringObjectsItemList = BringObjects:WaitForChild("ItemList")
 
-local BringObjectsBringing = false
 local BringObjectsBringingItem = nil
 local BringObjectsBringingCounter = 0 -- Internal, must be 0
 local BringObjectsBringingCount = 0
@@ -115,8 +114,8 @@ local currentlyBringing = false
 
 local objectBringingInProgress = false
 function callBeginObjectBring()
+  warn("Running Bring Call")
   if objectBringingInProgress then return end
-  if not BringObjectsBringing then return end
   if not BringObjectsBringingItem then return end
   if not (BringObjectsBringingCount > 0) then return end
   local hrp = character:FindFirstChild("HumanoidRootPart")
@@ -191,8 +190,8 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsBring.Text = "Abort Bringing"
     callBeginObjectBring()
   end
-  BringObjectsOptionsBring.Text = "Start Bringing"
   wait(1)
+  BringObjectsOptionsBring.Text = "Start Bringing"
   BringObjectsOptionsBringDB = false
 end)
 
