@@ -94,7 +94,7 @@ local BringObjectsBringing = false
 local BringObjectsBringingItem = nil
 local BringObjectsBringingCounter = 0 -- Internal, must be 0
 local BringObjectsBringingCount = 0
-local BringObjectsBringingDistance = math.huge()
+local BringObjectsBringingDistance = 99999999
 
 BringObjects.Visible = true -- Set visible temporary until a menu exists for selecting multiple options
 
@@ -140,10 +140,10 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
   if BringObjectsOptionsBring then
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) >= 0 and tonumber(BringObjectsOptionsCount.Text) or 0)
-    BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) >= 0 and tonumber(BringObjectsOptionsDistance.Text) or math.huge())
+    BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) >= 0 and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
   else
     BringObjectsBringingCount = 0
-    BringObjectsBringingDistance = math.huge()
+    BringObjectsBringingDistance = 99999999
   end
 end)
 
