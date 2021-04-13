@@ -83,7 +83,7 @@ end
 local InterfaceOpen = true
 UIS.InputBegan:Connect(function(input,gpe)
   if gpe then return end
-  if input == Enum.KeyCode.RightAlt then
+  if input.KeyCode == Enum.KeyCode.RightAlt then
     InterfaceOpen = not InterfaceOpen
     if InterfaceOpen then
       GUI:WaitForChild("Frame"):TweenPosition(UDim2.new(0.5,0,0.5,0),nil,nil,0.5,true)
