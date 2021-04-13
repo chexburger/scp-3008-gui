@@ -82,19 +82,19 @@ function BindBringObjectItemSelect(btn)
 end
 
 local itemTemplate = Templates:WaitForChild("ObjectTemplate")
-local duplicateList = {}
+local objectDuplicateList = {}
 function reloadBringObjectItemList()
   duplicateList = {}
   for _,container in pairs(StructureObjects:GetChildren()) do
     if container:FindFirstChild("Items") then
       for _,object in pairs(container.Items:GetChildren()) do
         if object:IsA("Model") and object:FindFirstChild("Base") then
-          duplicateList[object.Name] = true
+          objectDuplicateList[object.Name] = true
         end
       end
     end
   end
-  for name,_ in pairs(duplicateList) do
+  for name,_ in pairs(objectDuplicateList) do
     local temp = itemTemplate:Clone()
     temp.Name = name
     temp.Text = name
