@@ -2,11 +2,10 @@ while not _G.SCP3008GUI do wait() end
 
 local CoreGui = game:GetService("CoreGui")
 local UIS = game:GetService("UserInputService")
-local GUI = _G.SCP3008GUI.Interface
 local LP = game:GetService("Players").LocalPlayer
 local character = LP.Character or LP.CharacterAdded:Wait()
-while not GUI do wait() end
-print("good on interface")
+while not _G.SCP3008GUI.Interface do wait() end
+local GUI = _G.SCP3008GUI.Interface
 
 syn.protect_gui(GUI)
 GUI.Parent = CoreGui
@@ -81,7 +80,6 @@ for i,v in pairs(GUI:GetDescendants()) do
 end
 
 -- Interface Core Functionality
-print("got to new functionality")
 local InterfaceOpen = true
 UIS.InputBegan:Connect(function(input,gpe)
   if gpe then return end
@@ -94,7 +92,6 @@ UIS.InputBegan:Connect(function(input,gpe)
     end
   end
 end)
-print("got past new functionality")
 
 -- Interface > MenuContents
 local BringObjects = MenuContents:WaitForChild("BringObjects")
