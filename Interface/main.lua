@@ -25,8 +25,6 @@ local MenuSelection = GUI:WaitForChild("Frame"):WaitForChild("MenuSelection")
 MenuContents.Visible = true -- False when menu selection has more options
 MenuSelection.Visible = false
 
-print("")
-
 for i,v in pairs(Templates:GetChildren()) do
   if v:IsA("GuiObject") then
     v.Visible = false
@@ -36,8 +34,6 @@ end
 for i,v in pairs(MenuContents:GetChildren()) do
   if v:IsA("Frame") then v.Visible = false end
 end
-
-print("")
 
 for i,v in pairs(GUI:GetDescendants()) do
   if v:IsA("ScrollingFrame") then
@@ -50,8 +46,6 @@ for i,v in pairs(GUI:GetDescendants()) do
     end
   end
 end
-
-print("")
 
 -- Interface > MenuContents
 local BringObjects = MenuContents:WaitForChild("BringObjects")
@@ -69,8 +63,6 @@ local BringObjectsBringingItem = nil
 local BringObjectsBringingCounter = 0 -- Internal, must be 0
 local BringObjectsBringingCount = 0
 
-print("set mass of variables")
-
 BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   if not BringObjectsBringingItem then return end
   BringObjectsBringing = not BringObjectsBringing
@@ -82,16 +74,12 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   end
 end)
 
-print("mouse bound bring button")
-
 function BindBringObjectItemSelect(btn)
   btn.MouseButton1Click:Connect(function()
     BringObjectsBringingItem = btn.Name
     BringObjectsOptionsSelected.Text = "Item: "..btn.Name
   end)
 end
-
-print("bring select function exists")
 
 local itemTemplate = Templates:WaitForChild("ObjectTemplate")
 local objectDuplicateList = {}
@@ -116,11 +104,7 @@ function reloadBringObjectItemList()
   end
 end
 
-print("reload item list exists")
-
 reloadBringObjectItemList()
-
-print("reloaded item list")
 
 LP.CharacterAdded:Connect(function()
   wait(3)
