@@ -39,7 +39,7 @@ TextLabel2.BackgroundTransparency = 1
 TextLabel2.Font = Enum.Font.Jura
 TextLabel2.Position = UDim2.new(0, 0, 1, -5)
 TextLabel2.Size = UDim2.new(1, 0, 0, 15)
-TextLabel2.Text = "Developed by echesol"
+TextLabel2.Text = "Developed by echesol | Right Alt to Close"
 TextLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel2.TextScaled = true
 TextLabel2.TextSize = 14
@@ -120,7 +120,7 @@ ObjectList.BackgroundTransparency = 1
 ObjectList.Name = "ObjectList"
 ObjectList.Position = UDim2.new(1, 0, 0, 0)
 ObjectList.ScrollBarThickness = 5
-ObjectList.Size = UDim2.new(0.4, 0, 0.6, 0)
+ObjectList.Size = UDim2.new(0.4, 0, 0.6, -10)
 ObjectList.Parent = BringObjects
 
 local ItemList = Instance.new("ScrollingFrame")
