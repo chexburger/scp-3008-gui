@@ -114,7 +114,7 @@ BringObjects.Visible = true -- Set visible temporary until a menu exists for sel
 local currentlyBringing = false
 
 function callBeginObjectBring()
-  if currentlyBringing then return end
+  if objectBringingInProgress then return end
   if not BringObjectsBringing then return end
   if not BringObjectsBringingItem then return end
   if not (BringObjectsBringingCount > 0) then return end
@@ -122,6 +122,8 @@ function callBeginObjectBring()
   if not hrp then return end
   local pos = hrp.CFrame
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
+
+  warn("Running bring")
 
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
@@ -140,34 +142,56 @@ function callBeginObjectBring()
       });
   end
 
-  currentlyBringing = true
+  objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if ((v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
+      else
+        warn("Item does not match or is too close")
       end
     else
+      warn("Reached capacity of items to bring")
       break
     end
   end
-  currentlyBringing = false
+  objectBringingInProgress = false
 end
 
+-- BringObjectsOptionsBring.MouseButton1Click:Connect(function()
+--   if not BringObjectsBringingItem then return end
+--   BringObjectsBringing = not BringObjectsBringing
+--   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
+--   if currentlyBringing then
+--
+--   end
+  -- if BringObjectsOptionsBring then
+  --   BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) and tonumber(BringObjectsOptionsCount.Text) or 0)
+  --   BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
+  --   callBeginObjectBring()
+  --   BringObjectsOptionsBring.Text = "Start Bringing"
+  -- end
+-- end)
+
+local BringObjectsOptionsBringDB = false
 BringObjectsOptionsBring.MouseButton1Click:Connect(function()
-  if not BringObjectsBringingItem then return end
-  if currentlyBringing then return end
-  BringObjectsBringing = not BringObjectsBringing
-  BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
-  if BringObjectsOptionsBring then
+  if BringObjectsOptionsBringDB then return end -- Debounce
+  if not BringObjectsBringingItem then return end -- Must select item first
+  BringObjectsOptionsBringDB = true
+  if objectBringingInProgress then -- Abort
+    BringObjectsOptionsCount.Text = "0"
+    BringObjectsBringingCount = 0
+  else -- Start bringing
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) and tonumber(BringObjectsOptionsCount.Text) or 0)
-    BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
-    BringObjectsBringingCount = (BringObjectsBringingCount >= 0) and BringObjectsBringingCount or 0
-    BringObjectsBringingAmount = (BringObjectsBringingAmount >= 0) and BringObjectsBringingAmount or 0
+    BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
+    BringObjectsOptionsCount.Text = tostring(BringObjectsBringingCount)
+    BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     callBeginObjectBring()
-    BringObjectsBringing = false
-    BringObjectsOptionsBring.Text = "Start Bringing"
   end
+  BringObjectsOptionsBring.Text = "Start Bringing"
+  wait(1)
+  BringObjectsOptionsBringDB = false
 end)
 
 function BindBringObjectItemSelect(btn)
