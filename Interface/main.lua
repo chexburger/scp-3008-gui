@@ -80,6 +80,7 @@ for i,v in pairs(GUI:GetDescendants()) do
 end
 
 -- Interface Core Functionality
+print("got to new functionality")
 local InterfaceOpen = true
 UIS.InputBegan:Connect(function(input,gpe)
   if gpe then return end
@@ -92,6 +93,7 @@ UIS.InputBegan:Connect(function(input,gpe)
     end
   end
 end)
+print("got past new functionality")
 
 -- Interface > MenuContents
 local BringObjects = MenuContents:WaitForChild("BringObjects")
