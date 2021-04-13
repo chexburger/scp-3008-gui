@@ -155,6 +155,7 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   if BringObjectsOptionsBring then
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) >= 0 and tonumber(BringObjectsOptionsCount.Text) or 0)
     BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) >= 0 and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
+    callBeginObjectBring()
   else
     BringObjectsBringingCount = 0
     BringObjectsBringingDistance = 99999999
