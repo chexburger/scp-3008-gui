@@ -139,11 +139,13 @@ function callBeginObjectBring()
   end
 
   for i,v in pairs(StructureConsumablesMerged) do
-    if (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude < BringObjectsBringingDistance then
-      if BringObjectsBringingCounter < BringObjectsBringingCount then
+    if BringObjectsBringingCounter < BringObjectsBringingCount then
+      if (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude < BringObjectsBringingDistance then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-3,3),-3,math.random(-3,3)))
       end
+    else
+      break
     end
   end
 end
