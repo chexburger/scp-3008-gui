@@ -142,6 +142,7 @@ function callBeginObjectBring()
 
   objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
+    print(v:GetFullName())
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
