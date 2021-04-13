@@ -37,10 +37,10 @@ function ReloadGroundItemsList()
       table.insert(Consumables,item)
     end
   end
-  for i,v in pairs(StructureObjects:GetChildren()) do
+  for i,v in pairs(StructureObjects) do
     table.insert(StructureConsumablesMerged,v)
   end
-  for i,v in pairs(Consumables:GetChildren()) do
+  for i,v in pairs(Consumables) do
     table.insert(StructureConsumablesMerged,v)
   end
 
