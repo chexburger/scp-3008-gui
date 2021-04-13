@@ -162,9 +162,6 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     callBeginObjectBring()
     BringObjectsBringing = false
     BringObjectsOptionsBring.Text = "Start Bringing"
-  else
-    BringObjectsBringingCount = 0
-    BringObjectsBringingDistance = 99999999
   end
 end)
 
