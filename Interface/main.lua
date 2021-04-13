@@ -146,6 +146,8 @@ function callBeginObjectBring()
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
+      else
+        print(v:FindFirstChildWhichIsA("BasePart"), (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude, BringObjectsBringingDistance, v.Name == BringObjectsBringingItem)
       end
     else
       break
