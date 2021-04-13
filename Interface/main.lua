@@ -122,6 +122,7 @@ function callBeginObjectBring()
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
 
   local function bringToPosition(item,cf)
+    print("item was called to move")
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
       wait(0.15)
       movementFunc:InvokeServer({
@@ -153,6 +154,7 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   BringObjectsBringing = not BringObjectsBringing
   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
   if BringObjectsOptionsBring then
+    print("we do be bringing")
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) >= 0 and tonumber(BringObjectsOptionsCount.Text) or 0)
     BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) >= 0 and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
     callBeginObjectBring()
