@@ -63,6 +63,8 @@ local BringObjectsBringingItem = nil
 local BringObjectsBringingCounter = 0 -- Internal, must be 0
 local BringObjectsBringingCount = 0
 
+BringObjects.Visible = true -- Set visible temporary until a menu exists for selecting multiple options
+
 BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   if not BringObjectsBringingItem then return end
   BringObjectsBringing = not BringObjectsBringing
