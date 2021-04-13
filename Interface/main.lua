@@ -111,8 +111,10 @@ local BringObjectsBringingCount = 0
 local BringObjectsBringingDistance = 99999999
 
 BringObjects.Visible = true -- Set visible temporary until a menu exists for selecting multiple options
+local currentlyBringing = false
 
 function callBeginObjectBring()
+  if currentlyBringing then return end
   if not BringObjectsBringing then return end
   if not BringObjectsBringingItem then return end
   if not (BringObjectsBringingCount > 0) then return end
@@ -138,6 +140,7 @@ function callBeginObjectBring()
       });
   end
 
+  currentlyBringing = true
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance then
@@ -148,10 +151,12 @@ function callBeginObjectBring()
       break
     end
   end
+  currentlyBringing = false
 end
 
 BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   if not BringObjectsBringingItem then return end
+  if currentlyBringing then return end
   BringObjectsBringing = not BringObjectsBringing
   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
   if BringObjectsOptionsBring then
