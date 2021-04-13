@@ -211,6 +211,9 @@ function reloadBringObjectItemList()
   for i,v in pairs(BringObjectsObjectList:GetChildren()) do
     if v:IsA("TextButton") then v:Destroy() end
   end
+  for i,v in pairs(BringObjectsItemList:GetChildren()) do
+    if v:IsA("TextButton") then v:Destroy() end
+  end
   for i,v in pairs(StructureObjects) do
     objectDuplicateList[v.Name] = true
   end
