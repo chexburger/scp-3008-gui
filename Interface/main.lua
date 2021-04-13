@@ -142,7 +142,6 @@ function callBeginObjectBring()
 
   objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
-    print(v:GetFullName())
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
@@ -202,6 +201,7 @@ local itemTemplate = Templates:WaitForChild("ObjectTemplate")
 local objectDuplicateList = {}
 local itemDuplicateList = {}
 function reloadBringObjectItemList()
+  ReloadGroundItemsList()
   objectDuplicateList = {}
   itemDuplicateList = {}
   for i,v in pairs(BringObjectsObjectList:GetChildren()) do
@@ -235,7 +235,12 @@ function reloadBringObjectItemList()
 end
 reloadBringObjectItemList()
 
-BringObjectsOptionsReload.MouseButton1Click:Connect(reloadBringObjectItemList)
+BringObjectsOptionsReload.MouseButton1Click:Connect(function()
+  BringObjectsOptionsReload.Visible = false
+  reloadBringObjectItemList()
+  wait(1)
+  BringObjectsOptionsReload.Visible = true
+end)
 
 LP.CharacterAdded:Connect(function(char)
   character = char
