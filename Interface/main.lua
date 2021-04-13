@@ -115,8 +115,7 @@ BringObjects.Visible = true -- Set visible temporary until a menu exists for sel
 function callBeginObjectBring()
   if not BringObjectsBringing then return end
   if not BringObjectsBringingItem then return end
-  print(typeof(BringObjectsBringingCount),4)
-  if not BringObjectsBringingCount > 0 then return end
+  if not (BringObjectsBringingCount > 0) then return end
   local hrp = character:FindFirstChild("HumanoidRootPart")
   if not hrp then return end
   local pos = hrp.CFrame
@@ -154,13 +153,10 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   BringObjectsBringing = not BringObjectsBringing
   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
   if BringObjectsOptionsBring then
-    print(typeof(BringObjectsBringingCount),1)
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) and tonumber(BringObjectsOptionsCount.Text) or 0)
-    print(typeof(BringObjectsBringingCount),2)
     BringObjectsBringingAmount = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
     BringObjectsBringingCount = (BringObjectsBringingCount >= 0) and BringObjectsBringingCount or 0
     BringObjectsBringingAmount = (BringObjectsBringingAmount >= 0) and BringObjectsBringingAmount or 0
-    print(typeof(BringObjectsBringingCount),3)
     callBeginObjectBring()
     BringObjectsBringing = false
     BringObjectsOptionsBring.Text = "Start Bringing"
