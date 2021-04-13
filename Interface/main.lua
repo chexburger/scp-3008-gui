@@ -79,6 +79,20 @@ for i,v in pairs(GUI:GetDescendants()) do
   end
 end
 
+-- Interface Core Functionality
+local InterfaceOpen = true
+UIS.InputBegan:Connect(function(input,gpe)
+  if gpe then return end
+  if input == Enum.KeyCode.RightAlt then
+    InterfaceOpen = not InterfaceOpen
+    if InterfaceOpen then
+      GUI:WaitForChild("Frame"):TweenPosition(UDim2.new(0.5,0,0.5,0),nil,nil,0.5,true)
+    else
+      GUI:WaitForChild("Frame"):TweenPosition(UDim2.new(0.5,0,1,GUI:WaitForChild("Frame").Size.Y.Offset),nil,nil,0.5,true)
+    end
+  end
+end)
+
 -- Interface > MenuContents
 local BringObjects = MenuContents:WaitForChild("BringObjects")
 local BringObjectsOptions = BringObjects:WaitForChild("Options")
