@@ -114,7 +114,6 @@ local currentlyBringing = false
 
 local objectBringingInProgress = false
 function callBeginObjectBring()
-  warn("Running Bring Call")
   if objectBringingInProgress then return end
   if not BringObjectsBringingItem then return end
   if not (BringObjectsBringingCount > 0) then return end
@@ -123,7 +122,6 @@ function callBeginObjectBring()
   local pos = hrp.CFrame
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
 
-  warn("Running bring")
 
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
@@ -145,14 +143,11 @@ function callBeginObjectBring()
   objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
-      if ((v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
+      if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
-      else
-        warn("Item does not match or is too close")
       end
     else
-      warn("Reached capacity of items to bring")
       break
     end
   end
