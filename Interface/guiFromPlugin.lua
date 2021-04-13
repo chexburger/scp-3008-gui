@@ -33,14 +33,6 @@ TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
 TextLabel.Parent = Frame
 
-local ImageButton = Instance.new("ImageButton")
-ImageButton.AnchorPoint = Vector2.new(1, 0)
-ImageButton.BackgroundTransparency = 1
-ImageButton.Image = "http://www.roblox.com/asset/?id=6031094678"
-ImageButton.Position = UDim2.new(1, -2, 0, 2)
-ImageButton.Size = UDim2.new(0, 25, 0, 25)
-ImageButton.Parent = Frame
-
 local TextLabel2 = Instance.new("TextLabel")
 TextLabel2.AnchorPoint = Vector2.new(0, 1)
 TextLabel2.BackgroundTransparency = 1
