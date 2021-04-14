@@ -122,6 +122,8 @@ function callBeginObjectBring()
   objectBringingInProgress = true
   local pos = hrp.CFrame
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
+  local fd = character:FindFirstChild("falldamage")
+  local disabledfd = false
 
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
@@ -141,6 +143,10 @@ function callBeginObjectBring()
   end
 
   BringObjectsBringingCounter = 0
+  if fd and fd.Disabled == true then
+    disabledfd = true
+    fd.Disabled = true
+  end
 
   for i,v in pairs(StructureConsumablesMerged) do
     if character:WaitForChild("Humanoid").Health <= 0 then break end
@@ -152,6 +158,7 @@ function callBeginObjectBring()
       end
     end
   end
+  if disabledfd == true then fd.Disabled = false end
   objectBringingInProgress = false
 end
 
