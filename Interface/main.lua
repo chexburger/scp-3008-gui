@@ -160,6 +160,10 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   if BringObjectsOptionsBringDB then return end -- Debounce
   if not BringObjectsBringingItem then return end -- Must select item first
   BringObjectsOptionsBringDB = true
+  spawn(function()
+    wait(1)
+    BringObjectsOptionsBringDB = false
+  end)
   if objectBringingInProgress then -- Abort
     BringObjectsOptionsCount.Text = "0"
     BringObjectsBringingCount = 0
@@ -174,7 +178,6 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
   end
   wait(0.5)
   BringObjectsOptionsBring.Text = "Start Bringing"
-  BringObjectsOptionsBringDB = false
 end)
 
 function BindBringObjectItemSelect(btn)
