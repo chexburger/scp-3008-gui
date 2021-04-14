@@ -144,9 +144,8 @@ function callBeginObjectBring()
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
-        print("i want this item")
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
-        bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
+        bringToPosition(v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
       end
     else
       objectBringingInProgress = false
@@ -171,6 +170,7 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     BringObjectsOptionsBring.Text = "Abort Bringing"
     callBeginObjectBring()
+    print(objectBringingInProgress)
   end
   wait(0.5)
   BringObjectsOptionsBring.Text = "Start Bringing"
