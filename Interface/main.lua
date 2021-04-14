@@ -148,9 +148,6 @@ function callBeginObjectBring()
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
       end
-    else
-      objectBringingInProgress = false
-      break
     end
   end
   objectBringingInProgress = false
