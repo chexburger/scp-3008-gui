@@ -116,7 +116,7 @@ local objectBringingInProgress = false
 function callBeginObjectBring()
   if objectBringingInProgress then return end
   if not BringObjectsBringingItem then return end
-  if not (BringObjectsBringingCount > 0) then return end
+  if BringObjectsBringingCount <= 0 then return end
   local hrp = character:FindFirstChild("HumanoidRootPart")
   if not hrp then return end
   local pos = hrp.CFrame
@@ -125,19 +125,19 @@ function callBeginObjectBring()
 
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
-      wait(0.15)
-      movementFunc:InvokeServer({
-        ["Action"] = "Pickup",
-        ["Model"] = item
-      });
-      wait(0.15)
-      character:MoveTo(pos.p)
-      wait(0.15)
-      movementFunc:InvokeServer({
-        ["CameraCFrame"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
-        ["Action"] = "Drop",
-        ["TargetCFrame"] = cf
-      });
+    wait(0.15)
+    movementFunc:InvokeServer({
+      ["Action"] = "Pickup",
+      ["Model"] = item
+    });
+    wait(0.15)
+    character:MoveTo(pos.p)
+    wait(0.15)
+    movementFunc:InvokeServer({
+      ["CameraCFrame"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
+      ["Action"] = "Drop",
+      ["TargetCFrame"] = cf
+    });
   end
 
   objectBringingInProgress = true
