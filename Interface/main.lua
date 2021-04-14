@@ -114,7 +114,7 @@ local currentlyBringing = false
 
 local objectBringingInProgress = false
 function callBeginObjectBring()
-  if objectBringingInProgress == true then return end
+  if objectBringingInProgress == true then print("already running object bring") return end
   if not BringObjectsBringingItem then return end
   if BringObjectsBringingCount <= 0 then return end
   local hrp = character:FindFirstChild("HumanoidRootPart")
