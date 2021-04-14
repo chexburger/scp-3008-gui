@@ -142,6 +142,7 @@ function callBeginObjectBring()
   end
 
   for i,v in pairs(StructureConsumablesMerged) do
+    if character:WaitForChild("Humanoid").Health <= 0 then break end
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
@@ -170,7 +171,6 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     BringObjectsOptionsBring.Text = "Abort Bringing"
     callBeginObjectBring()
-    print(objectBringingInProgress)
   end
   wait(0.5)
   BringObjectsOptionsBring.Text = "Start Bringing"
@@ -230,6 +230,9 @@ end)
 
 LP.CharacterAdded:Connect(function(char)
   character = char
+  objectBringingInProgress = false
+  BringObjectsOptionsCount.Text = "0"
+  BringObjectsBringingCount = 0
   wait(3)
   reloadBringObjectItemList()
 end)
