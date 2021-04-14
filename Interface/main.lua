@@ -127,18 +127,22 @@ function callBeginObjectBring()
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
     wait(0.15)
+    print("pickup")
     movementFunc:InvokeServer({
       ["Action"] = "Pickup",
       ["Model"] = item
     });
+    print("picked up")
     wait(0.15)
     character:MoveTo(pos.p)
     wait(0.15)
+    print("drop")
     movementFunc:InvokeServer({
       ["CameraCFrame"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
       ["Action"] = "Drop",
       ["TargetCFrame"] = cf
     });
+    print("dropped")
   end
 
   for i,v in pairs(StructureConsumablesMerged) do
@@ -146,12 +150,10 @@ function callBeginObjectBring()
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
-        print("this is",i)
         bringToPosition(v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
       end
     end
   end
-  print("finished function")
   objectBringingInProgress = false
 end
 
@@ -174,7 +176,6 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     BringObjectsOptionsBring.Text = "Abort Bringing"
     callBeginObjectBring()
-    print(objectBringingInProgress)
   end
   wait(0.5)
   BringObjectsOptionsBring.Text = "Start Bringing"
