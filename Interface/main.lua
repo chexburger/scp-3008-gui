@@ -146,8 +146,6 @@ function callBeginObjectBring()
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
-      else
-        print(v:FindFirstChildWhichIsA("BasePart"), (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude, BringObjectsBringingDistance, v.Name == BringObjectsBringingItem)
       end
     else
       break
@@ -155,21 +153,6 @@ function callBeginObjectBring()
   end
   objectBringingInProgress = false
 end
-
--- BringObjectsOptionsBring.MouseButton1Click:Connect(function()
---   if not BringObjectsBringingItem then return end
---   BringObjectsBringing = not BringObjectsBringing
---   BringObjectsOptionsBring.Text = BringObjectsBringing == true and "Abort Bringing" or "Start Bringing"
---   if currentlyBringing then
---
---   end
-  -- if BringObjectsOptionsBring then
-  --   BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) and tonumber(BringObjectsOptionsCount.Text) or 0)
-  --   BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
-  --   callBeginObjectBring()
-  --   BringObjectsOptionsBring.Text = "Start Bringing"
-  -- end
--- end)
 
 local BringObjectsOptionsBringDB = false
 BringObjectsOptionsBring.MouseButton1Click:Connect(function()
