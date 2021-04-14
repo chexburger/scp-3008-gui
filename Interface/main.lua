@@ -143,7 +143,7 @@ function callBeginObjectBring()
   end
 
   BringObjectsBringingCounter = 0
-  if fd and fd.Disabled == true then
+  if fd and fd.Disabled == false then
     disabledfd = true
     fd.Disabled = true
   end
