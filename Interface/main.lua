@@ -147,9 +147,7 @@ function callBeginObjectBring()
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
-        local suc,err = pcall(function()
-          bringToPosition(v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
-        end)
+        local suc,err = pcall(bringToPosition,v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
         if err then warn(err) end
       end
     end
