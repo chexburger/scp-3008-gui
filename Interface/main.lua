@@ -184,12 +184,10 @@ function BindBringObjectItemSelect(btn)
 end
 
 local itemTemplate = Templates:WaitForChild("ObjectTemplate")
-local objectDuplicateList = {}
-local itemDuplicateList = {}
 function reloadBringObjectItemList()
   ReloadGroundItemsList()
-  objectDuplicateList = {}
-  itemDuplicateList = {}
+  local objectDuplicateList = {}
+  local itemDuplicateList = {}
   for i,v in pairs(BringObjectsObjectList:GetChildren()) do
     if v:IsA("TextButton") then v:Destroy() end
   end
@@ -202,6 +200,7 @@ function reloadBringObjectItemList()
   for i,v in pairs(Consumables) do
     itemDuplicateList[v.Name] = true
   end
+  wait(0.5)
   for name,_ in pairs(objectDuplicateList) do
     local temp = itemTemplate:Clone()
     temp.Name = name
