@@ -26,7 +26,7 @@ function ReloadGroundItemsList()
   for _,container in pairs(Ground:GetChildren()) do
     if container:FindFirstChild("Items") then
       for _,object in pairs(container.Items:GetChildren()) do
-        if object:IsA("Model") and object:FindFirstChild("Base") then
+        if object:IsA("Model") and (object:FindFirstChild("Base") or object:FindFirstChild("Root")) then
           table.insert(StructureObjects,object)
         end
       end
