@@ -114,11 +114,12 @@ local currentlyBringing = false
 
 local objectBringingInProgress = false
 function callBeginObjectBring()
-  if objectBringingInProgress then return end
+  if objectBringingInProgress == true then return end
   if not BringObjectsBringingItem then return end
   if BringObjectsBringingCount <= 0 then return end
   local hrp = character:FindFirstChild("HumanoidRootPart")
   if not hrp then return end
+  objectBringingInProgress = true
   local pos = hrp.CFrame
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
 
@@ -140,7 +141,6 @@ function callBeginObjectBring()
     });
   end
 
-  objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
       if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
@@ -149,6 +149,7 @@ function callBeginObjectBring()
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
       end
     else
+      objectBringingInProgress = false
       break
     end
   end
