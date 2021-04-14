@@ -115,18 +115,13 @@ local currentlyBringing = false
 local objectBringingInProgress = false
 function callBeginObjectBring()
   if objectBringingInProgress == true then print("already running object bring") return end
-  print("hey 1")
   if not BringObjectsBringingItem then return end
-  print("hey 2")
   if BringObjectsBringingCount <= 0 then return end
-  print("hey 2")
   local hrp = character:FindFirstChild("HumanoidRootPart")
   if not hrp then return end
-  print("hey 3")
   objectBringingInProgress = true
   local pos = hrp.CFrame
   local movementFunc = character:FindFirstChild("server_PickupSystem"):FindFirstChild("MainEvent")
-  print("hey 4")
 
   local function bringToPosition(item,cf)
     character:MoveTo(item:FindFirstChildWhichIsA("BasePart").Position)
@@ -145,7 +140,8 @@ function callBeginObjectBring()
     });
   end
 
-  print("hey 5")
+  BringObjectsBringingCounter = 0
+
   for i,v in pairs(StructureConsumablesMerged) do
     if character:WaitForChild("Humanoid").Health <= 0 then break end
     if BringObjectsBringingCounter < BringObjectsBringingCount then
@@ -155,7 +151,6 @@ function callBeginObjectBring()
       end
     end
   end
-  print("hey 6")
   objectBringingInProgress = false
 end
 
