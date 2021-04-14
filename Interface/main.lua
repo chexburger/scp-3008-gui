@@ -107,7 +107,7 @@ local BringObjectsItemList = BringObjects:WaitForChild("ItemList")
 local BringObjectsBringingItem = nil
 local BringObjectsBringingCounter = 0 -- Internal, must be 0
 local BringObjectsBringingCount = 0
-local BringObjectsBringingDistance = 99999999
+local BringObjectsBringingMinimumDistance = 500
 
 BringObjects.Visible = true -- Set visible temporary until a menu exists for selecting multiple options
 local currentlyBringing = false
@@ -143,7 +143,7 @@ function callBeginObjectBring()
   objectBringingInProgress = true
   for i,v in pairs(StructureConsumablesMerged) do
     if BringObjectsBringingCounter < BringObjectsBringingCount then
-      if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingDistance) and v.Name == BringObjectsBringingItem then
+      if (v:FindFirstChildWhichIsA("BasePart") and (v:FindFirstChildWhichIsA("BasePart").Position - pos.p).Magnitude > BringObjectsBringingMinimumDistance) and v.Name == BringObjectsBringingItem then
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         bringToPosition(v,pos+Vector3.new(math.random(-10,10),3,math.random(-10,10)))
       end
@@ -164,7 +164,7 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsBringingCount = 0
   else -- Start bringing
     BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) or 0)
-    BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) or 99999999)
+    BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) or 500)
     BringObjectsOptionsCount.Text = tostring(BringObjectsBringingCount)
     BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     BringObjectsOptionsBring.Text = "Abort Bringing"
