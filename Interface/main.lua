@@ -149,7 +149,7 @@ function callBeginObjectBring()
         BringObjectsBringingCounter = BringObjectsBringingCounter + 1
         local suc,err = pcall(function()
           bringToPosition(v,pos+Vector3.new(math.random(5,10),math.random(1,4),math.random(5,10)))
-        end
+        end)
         if err then warn(err) end
       end
     end
