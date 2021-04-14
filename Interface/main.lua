@@ -180,8 +180,8 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsCount.Text = "0"
     BringObjectsBringingCount = 0
   else -- Start bringing
-    BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) and tonumber(BringObjectsOptionsCount.Text) or 0)
-    BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) and tonumber(BringObjectsOptionsDistance.Text) or 99999999)
+    BringObjectsBringingCount = math.ceil(tonumber(BringObjectsOptionsCount.Text) or 0)
+    BringObjectsBringingMinimumDistance = math.ceil(tonumber(BringObjectsOptionsDistance.Text) or 99999999)
     BringObjectsOptionsCount.Text = tostring(BringObjectsBringingCount)
     BringObjectsOptionsDistance.Text = tostring(BringObjectsBringingMinimumDistance)
     BringObjectsOptionsBring.Text = "Abort Bringing"
