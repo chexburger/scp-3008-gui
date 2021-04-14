@@ -172,7 +172,7 @@ BringObjectsOptionsBring.MouseButton1Click:Connect(function()
     BringObjectsOptionsBring.Text = "Abort Bringing"
     callBeginObjectBring()
   end
-  wait(1)
+  wait(0.5)
   BringObjectsOptionsBring.Text = "Start Bringing"
   BringObjectsOptionsBringDB = false
 end)
